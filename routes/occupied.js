@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const loadedRangeObj = await Range.findOne({ id: { $eq: 123456 } });
     const existingRangeObj = Array.isArray(loadedRangeObj?.range)
       ? loadedRangeObj
-      : { id: 12356, range: [{}] };
+      : { id: 123456, range: [{}] };
 
     res.json(existingRangeObj.range);
     console.log("Success!");
