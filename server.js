@@ -24,4 +24,4 @@ const occupiedRouter = require("./routes/occupied");
 
 app.use("/occupied", occupiedRouter);
 
-app.listen(4000);
+app.listen(80 || 4000);
