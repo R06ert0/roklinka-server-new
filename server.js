@@ -2,13 +2,16 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
+const DB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://lucka:Lucy2021@cluster0.13ghr.mongodb.net/robert?retryWrites=true&w=majority";
 
 const safelyConnect = async () => {
-    await mongoose.connect('mongodb+srv://lucka:Lucy2021@cluster0.13ghr.mongodb.net/robert?retryWrites=true&w=majority')
-    console.log('Connected succesfully!')
-}
+  await mongoose.connect(DB_URI);
+  console.log("Connected succesfully!");
+};
 
-safelyConnect().catch(err => console.log(err))
+safelyConnect().catch((err) => console.log(err));
 
 app.use(express.json());
 app.use(cors({}));
