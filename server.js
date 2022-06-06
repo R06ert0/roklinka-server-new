@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const DB_URI =
   process.env.MONGODB_URI ||
   "mongodb+srv://lucka:Lucy2021@cluster0.13ghr.mongodb.net/robert?retryWrites=true&w=majority";
+const PORT = process.env.PORT;
 
 const safelyConnect = async () => {
   await mongoose.connect(DB_URI);
@@ -27,4 +28,7 @@ const occupiedRouter = require("./routes/occupied");
 
 app.use("/occupied", occupiedRouter);
 
-app.listen(80 || 4000);
+app.listen(PORT || 4, (err) => {
+  if (err) throw err;
+  console.log("%c Server running", "color: green");
+});
